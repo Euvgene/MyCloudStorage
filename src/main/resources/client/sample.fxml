@@ -17,4 +17,3 @@
             <TextArea fx:id="textArea"  onMouseClicked="#mouseClickedTextArea" onKeyTyped="#disableTextInput" prefHeight="346.0" prefWidth="400.0" />
         </children>
     </Pane>
-
