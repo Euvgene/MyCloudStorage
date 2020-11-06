@@ -1,7 +1,1 @@
 # Project exclude paths
-/target/
-/.idea/
-/server/
-/client/
-/target/
-/CloudStorage.iml
