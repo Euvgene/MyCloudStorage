@@ -16,7 +16,7 @@ public class Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        scene = new Scene(loadFXML(), 400, 400);
+        scene = new Scene(loadFXML(), 691, 440);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Cloud");
         primaryStage.setResizable(false);

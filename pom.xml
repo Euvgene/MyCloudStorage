@@ -23,6 +23,19 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.51.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
+        </dependency>
+
     </dependencies>
 
     <build>
