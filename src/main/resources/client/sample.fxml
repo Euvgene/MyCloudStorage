@@ -52,8 +52,10 @@
                       onMouseClicked="#mouseClickedTextArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"/>
             <Button layoutX="313.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Upload" onAction="#uploadFile" />
             <Button layoutX="312.0" layoutY="212.0" mnemonicParsing="false" text="Download" onAction="#downloadFile"  />
-            <TextField fx:id="textFieldServer" layoutX="68.0" layoutY="51.0" prefHeight="25.0" prefWidth="233.0" />
-            <TextField fx:id="textFieldUser" layoutX="397.0" layoutY="51.0" prefHeight="25.0" prefWidth="233.0" />
+            <TextField fx:id="textFieldServer" layoutX="68.0" layoutY="51.0" prefHeight="25.0" prefWidth="233.0" onKeyTyped="#disableTextInput"
+                       onMouseClicked="#mouseClickedTextArea"/>
+            <TextField fx:id="textFieldUser" layoutX="397.0" layoutY="51.0" prefHeight="25.0" prefWidth="233.0" onKeyTyped="#disableTextInput"
+                       onMouseClicked="#mouseClickedTextArea"/>
             <Button layoutX="7.0" layoutY="82.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="touch" onAction="#creatServerFile" />
             <Button layoutX="7.0" layoutY="114.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="mkdir" onAction="#createServerDir"/>
             <Button layoutX="7.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="rm" onAction="#removeServerFile"/>

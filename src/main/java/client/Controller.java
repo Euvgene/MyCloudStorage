@@ -19,7 +19,7 @@ public class Controller {
     private final String IP_ADRESS = "localhost";
     private final int PORT = 8189;
     private DataInputStream dis;
-    private Path rootPathUser = Path.of("C:/GeekBrainsJava/CloudStorage/client");
+    private Path rootPathUser = Path.of("C:/");
     private Path rootPathServer = Path.of("C:/GeekBrainsJava/CloudStorage/server");
     private String s;
     private final byte COUNT = 5;
@@ -65,6 +65,8 @@ public class Controller {
         messageField.editableProperty().setValue(false);
         messageFieldcloud.editableProperty().setValue(false);
         helpArea.editableProperty().setValue(false);
+        textFieldServer.editableProperty().setValue(false);
+        textFieldUser.editableProperty().setValue(false);
     }
 
     @FXML
@@ -74,6 +76,8 @@ public class Controller {
         messageField.editableProperty().setValue(false);
         messageFieldcloud.editableProperty().setValue(false);
         helpArea.editableProperty().setValue(false);
+        textFieldServer.editableProperty().setValue(false);
+        textFieldUser.editableProperty().setValue(false);
     }
 
     public void tryToAuth() throws IOException {
@@ -201,7 +205,7 @@ public class Controller {
             loginfield.clear();
             passwordfiled.clear();
             rootPathServer = Path.of("C:/GeekBrainsJava/CloudStorage/server");
-            rootPathUser = Path.of("C:/GeekBrainsJava/CloudStorage/client");
+            rootPathUser = Path.of("C:/");
         } catch (IOException e) {
             e.printStackTrace();
         }
