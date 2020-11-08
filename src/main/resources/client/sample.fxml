@@ -1,46 +1,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-
 <?import javafx.scene.layout.Pane?>
-
-
-<!--<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0"
-      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controller" >
-        <children>-->
-
-          <!--  <Button onAction="#start" layoutX="298.0" layoutY="350.0"
-                    mnemonicParsing="false" prefHeight="44.0" prefWidth="88.0" text="Send" />
-            <Button onAction="#getAllFilesList" layoutX="100.0" layoutY="225.0"
-                    mnemonicParsing="false" prefHeight="20.0" prefWidth="68.0" text="ls" />
-            <TextField
-
-                    fx:id="textField" promptText="Введите запрос"
-                    layoutX="14.0" layoutY="350.0" prefHeight="44.0" prefWidth="275.0" />
-            <TextArea fx:id="textArea"  onMouseClicked="#mouseClickedTextArea" onKeyTyped="#disableTextInput" prefHeight="100.0" prefWidth="100.0" />
-        </children>
-    </Pane>-->
-
-<!--
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.PasswordField?>
-<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121"
-      fx:controller="client.Controller">
-    <HBox fx:id="authPanel">
-        <TextField HBox.hgrow="ALWAYS" promptText="Your login" fx:id="loginfield"/>
-        <PasswordField promptText="Password" fx:id="passwordfiled" onAction="#tryToAuth"/>
-        <Button text="Log In" onAction="#tryToAuth"/>
-    </HBox>
-    <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS" onKeyTyped="#disableTextInput"
-              onMouseClicked="#mouseClickedTextArea"/>
-    <HBox fx:id="chatPanel" managed="false" visible="false">
-        <TextField fx:id="textField"  promptText="Введите текст" HBox.hgrow="ALWAYS"/>
-        <Button onAction="#start" text="Send"/>
-    </HBox>
-</VBox>
--->
 <?import javafx.scene.text.Font?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="691.0"
       xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controller">
 <children>
