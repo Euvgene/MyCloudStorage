@@ -1,5 +1,7 @@
 package client;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -8,10 +10,10 @@ import javafx.scene.layout.Pane;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     private Socket socket;
@@ -49,6 +51,10 @@ public class Controller {
     private Button messageButton;
     @FXML
     private Button loginbutton;
+    @FXML
+    private Button notDeleteButton;
+    @FXML
+    private Button deleteButton;
     @FXML
     private Button regbutton;
     @FXML
@@ -157,6 +163,8 @@ public class Controller {
     }
 
     public void closeMessagecloud() {
+        deleteButton.setVisible(false);
+        notDeleteButton.setVisible(false);
         messageFieldcloud.setVisible(false);
         messageButtoncloud.setVisible(false);
         textFieldFile.clear();
@@ -333,12 +341,52 @@ public class Controller {
         } else {
             Path newPath = Path.of(p.toString() + s);
             if (Files.exists(newPath)) {
-                Files.delete(newPath);
-                messageToUserCloud("File delete success");
+                try {
+                    Files.delete(newPath);
+                    messageToUserCloud("File delete success");
+                } catch (DirectoryNotEmptyException e) {
+                    getAllFilesList(newPath, helpArea);
+                    helpArea.appendText("\n" + "Directory have this file, delete anyway?");
+                    helpArea.setVisible(true);
+                    deleteButton.setVisible(true);
+                    notDeleteButton.setVisible(true);
+                    deleteButton.setOnAction(onMouseClicked -> {
+                        try {
+                            deleteAllFiles(newPath);
+                        } catch (IOException ioException) {
+                            messageToUserCloud("One of file is open now. " +
+                                    "Close please and repeat operation");
+                        }
+                    });
+                }
+
             } else {
                 messageToUserCloud("File not detected");
             }
         }
+    }
+
+    public void deleteAllFiles(Path p) throws IOException {
+        System.out.println("okey");
+        List<String> list =  new ArrayList<>();
+        Files.walkFileTree(p, new SimpleFileVisitor<>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                Files.delete(file.toAbsolutePath());
+                return super.visitFile(file, attrs);
+            }
+
+            @Override
+            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                list.add(dir.toString());
+                return super.preVisitDirectory(dir, attrs);
+            }
+        });
+        for (int i = list.size()-1; i >=0 ; i--) {
+            Files.delete(Path.of(list.get(i)));
+        }
+        closeMessagecloud();
+        updateFileList();
     }
 
     public void cdClient() {
@@ -459,4 +507,6 @@ public class Controller {
             messageToUserCloud("File " + s + " not detected");
         }
     }
+
+
 }

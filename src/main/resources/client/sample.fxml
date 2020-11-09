@@ -48,6 +48,8 @@
             <Button layoutX="7.0" layoutY="242.0" mnemonicParsing="false" onAction="#readFileServer" prefHeight="18.0" prefWidth="49.0" text="cat" />
             <TextArea prefHeight="440.0" prefWidth="691.0" visible="false" />
             <Button layoutX="636.0" layoutY="242.0" mnemonicParsing="false" onAction="#readFileUser" prefHeight="18.0" prefWidth="49.0" text="cat" />
+            <Button fx:id="notDeleteButton" layoutX="251.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="No" onAction="#closeMessagecloud" visible="false"/>
+            <Button fx:id="deleteButton" layoutX="372.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Yes" visible="false"/>
         </children>
     </Pane>
     <Pane fx:id="pane1" layoutY="-4.0" prefHeight="448.0" prefWidth="695.0">
