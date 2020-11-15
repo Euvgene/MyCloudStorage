@@ -1,4 +1,4 @@
-package dbconnection;
+package netty.dbconnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

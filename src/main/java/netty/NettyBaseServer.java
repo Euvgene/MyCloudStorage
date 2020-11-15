@@ -4,6 +4,9 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import netty.handlers.ChatMessegHandler;
@@ -17,9 +20,8 @@ public class NettyBaseServer {
             bootstrap.group(auth, worker).channel(NioServerSocketChannel.class).childHandler(new ChannelInitializer<>() {
                 @Override
                 protected void initChannel(Channel channel) {
-                    channel.pipeline().addLast(
-                            new StringDecoder(),
-                            new StringEncoder(),
+                    channel.pipeline().addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+                            new ObjectEncoder(),
                             new ChatMessegHandler()
                     );
                 }

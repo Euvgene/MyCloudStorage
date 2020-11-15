@@ -1,53 +1,47 @@
 package netty.handlers;
 
-import dbconnection.DbConn;
+import netty.dbconnection.DbConn;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Users {
     public List<UserEntity> usersList;
     private PreparedStatement ps;
-    public Users() throws SQLException {
-        usersList = new LinkedList<>();
-        ps = DbConn.getInstance()
+    public Users()  {
+        }
+
+
+    public String getNick(String login, String password)  {
+        String select = String.format("SELECT nick FROM users WHERE login = '%s' and password = '%s'",login, password);
+        try{ps = DbConn.getInstance()
                 .connection()
-                .prepareStatement("SELECT * FROM users");
-        ResultSet set = ps.executeQuery();
-        while (set.next()) {
-            UserEntity userEntity = new UserEntity();
-            userEntity.setLogin(set.getString("login"));
-            userEntity.setPassword(set.getString("password"));
-            userEntity.setRooth(set.getString("rooth"));
-            usersList.add(userEntity);
-        }
-        ps.close();
-    }
-    public String getNick(String login, String password) {
-        for (UserEntity u : usersList) {
-            if (u.login.equals(login) && u.password.equals(password)) {
-                return u.rooth;
+                .prepareStatement(select);
+        ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                String s = resultSet.getString(1);
+                return s;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return "notok";
+        return null;
     }
 
-    public String addNick(String login, String password)  {
+    public void addNick(String nick, String login, String password)  {
        try {
            ps = DbConn.getInstance()
                    .connection()
-                   .prepareStatement("INSERT INTO users (login, password, rooth) VALUES (?,?,?)");
-           ps.setString(1, login);
-           ps.setString(2, password);
-           ps.setString(3, login);
+                   .prepareStatement("INSERT INTO users (nick, login, password) VALUES (?,?,?)");
+           ps.setString(1, nick);
+           ps.setString(2, login);
+           ps.setString(3, password);
            ps.executeUpdate();
            ps.close();
-           return "addOk";
        } catch (SQLException s){
-           return "addNotOk";
+
        }
     }
     public class UserEntity {

@@ -12,23 +12,25 @@ import java.net.Socket;
 
 public class Client extends Application {
     private static Scene scene;
-    private  Socket socket;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        scene = new Scene(loadFXML(), 691, 440);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Cloud");
-        primaryStage.setResizable(false);
-        primaryStage.show();
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(loadFXML("main"));
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
 
-    private static Parent loadFXML() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Client.class.getResource("sample.fxml"));
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Client.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 }
