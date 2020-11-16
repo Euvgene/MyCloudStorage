@@ -11,7 +11,6 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-
 import java.util.ResourceBundle;
 
 
@@ -22,14 +21,12 @@ public class SignUpController implements Initializable {
     public Button signUp;
     public VBox Box;
 
-
     public void signUpAction(ActionEvent actionEvent) {
         Network.getInstance().sendMessage(new CommandMessage(Command.SIGN_UP, nick.getText(), login.getText(), password.getText()));
         login.clear();
         password.clear();
         nick.clear();
     }
-
 
     public void buttonExit() {
         Network.getInstance().close();
@@ -66,7 +63,5 @@ public class SignUpController implements Initializable {
                 }
             }
         })).start();
-
-
     }
 }
