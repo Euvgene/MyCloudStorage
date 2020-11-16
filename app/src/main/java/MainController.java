@@ -192,9 +192,6 @@ public class MainController implements Initializable {
         MenuItem deleteItem = new MenuItem("Delete file");
         deleteItem.setOnAction(actionEvent -> {
             if (getSelectedFileName(storageTable) != null) {
-                String s = getCurrentPath(pathFieldRight);
-                String[] str = s.replace("\\", "/").split("/", 8);
-                System.out.println(str[2]);
                 Network.getInstance().sendMessage(new CommandMessage(Command.FILE_DELETE, pathFieldRight.getText() + "\\" + getSelectedFileName(storageTable)));
             }
             if (getSelectedFileName(clientTable) != null) {
