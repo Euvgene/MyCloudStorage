@@ -38,6 +38,7 @@ public class ChatMessageHandler extends SimpleChannelInboundHandler<AbstractMess
                     break;
                 case SIGN_UP:
                   String s = u.addNick(cm.getParam(), cm.getSecondParam(), cm.getThirdParam());
+                    System.out.println(s);
                     ctx.writeAndFlush(new CommandMessage(Command.SIGN_UP, s));
                     break;
                 case STORAGE_FILES_LIST:
