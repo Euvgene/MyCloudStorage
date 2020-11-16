@@ -1,18 +1,12 @@
-package client;
-
-import common.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,7 +76,7 @@ public class MainController implements Initializable {
                 try {
                     FileMessage fm = (FileMessage) o;
                     Files.write(Paths.get(pathFieldLeft.getText(), fm.getName()), fm.getData(), StandardOpenOption.CREATE);
-                    updateClientFilesList(Paths.get(pathFieldLeft.getText()));
+                    updateClientFilesList(Path.of(pathFieldLeft.getText()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -101,7 +95,6 @@ public class MainController implements Initializable {
             }
         })).start();
     }
-
 
     private void updateClientFilesList(Path path) {
         try {
@@ -184,18 +177,15 @@ public class MainController implements Initializable {
         }
     }
 
-
     public void downloadFile() {
         if (getSelectedFileName(storageTable) != null) {
             Network.getInstance().sendMessage(new CommandMessage(Command.FILE_REQUEST, getCurrentPath(pathFieldRight), getSelectedFileName(storageTable)));
         } else {
-
             Alert alert = new Alert(Alert.AlertType.WARNING, "No file selected", ButtonType.OK);
             alert.showAndWait();
         }
         updateClientFilesList(Paths.get(getCurrentPath(pathFieldLeft)));
     }
-
 
     private void initializeDeleteFile() {
         MenuItem deleteItem = new MenuItem("Delete file");
@@ -220,7 +210,6 @@ public class MainController implements Initializable {
         contextMenu.getItems().add(deleteItem);
         requestShow();
     }
-
 
     private void initializeCreateDir() {
         MenuItem deleteItem = new MenuItem("Create dir");
@@ -253,7 +242,6 @@ public class MainController implements Initializable {
         contextMenu.getItems().add(deleteItem);
         requestShow();
     }
-
 
     private void initializeRenameFile() {
         MenuItem renameItem = new MenuItem("Rename file");

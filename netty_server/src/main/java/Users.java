@@ -1,6 +1,5 @@
-package netty.handlers;
 
-import netty.dbconnection.DbConn;
+import dbconnection.DbConn;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

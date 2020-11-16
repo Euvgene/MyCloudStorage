@@ -1,7 +1,4 @@
-package client;
 
-import common.Command;
-import common.CommandMessage;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

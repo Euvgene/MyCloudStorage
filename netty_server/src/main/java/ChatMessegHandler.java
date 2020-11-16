@@ -1,6 +1,3 @@
-package netty.handlers;
-
-import common.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -61,7 +58,6 @@ public class ChatMessegHandler extends SimpleChannelInboundHandler<AbstractMessa
                     }
                     break;
                 case DIRECTORY_FILES_LIST:
-                    System.out.println("3");
                     ListMessage l = new ListMessage();
                     if (Files.exists(Paths.get(PATH, nick))) {
                         l.createList(Paths.get(PATH, nick));
@@ -77,7 +73,6 @@ public class ChatMessegHandler extends SimpleChannelInboundHandler<AbstractMessa
                     }
                     break;
                 case FILE_DELETE:
-                    System.out.println(Path.of(cm.getParam()));
                     Files.deleteIfExists(Paths.get(cm.getParam()));
                     Path p = Paths.get(cm.getParam());
                     ctx.writeAndFlush(new CommandMessage(Command.STORAGE_FILES_LIST, p.getParent().toString()));
@@ -87,12 +82,8 @@ public class ChatMessegHandler extends SimpleChannelInboundHandler<AbstractMessa
                     ctx.writeAndFlush(new CommandMessage(Command.STORAGE_FILES_LIST, cm.getThirdParam()));
                     break;
                 case FILE_DIR:
-                    System.out.println("2");
-
                     ListMessage m = new ListMessage();
-                    // System.out.println(Path.of(PATH, cm.getParam()).toString());
                     m.createList(Paths.get(cm.getParam()));
-
                     ctx.channel().writeAndFlush(m);
                     break;
                 case CREATE_DIR:

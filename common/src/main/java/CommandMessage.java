@@ -1,5 +1,3 @@
-package common;
-
 public class CommandMessage extends AbstractMessage {
     private Command command;
     private String param;
