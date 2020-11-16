@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +22,7 @@ public class MainController implements Initializable {
     public VBox auth;
     public TextField login;
     public PasswordField password;
-    public Button signUp;
+    public Button signUpBtn;
     public VBox storage;
     public TableView<FileManager> clientTable;
     public TextField pathFieldLeft;
@@ -311,13 +312,14 @@ public class MainController implements Initializable {
     }
 
     public void logInAction() {
+        Network.getInstance();
         Network.getInstance().sendMessage(new CommandMessage(Command.AUTH, login.getText(), password.getText()));
         login.clear();
         password.clear();
     }
 
     public void setSignUp() {
-        signUp.getScene().getWindow().hide();
+        signUpBtn.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().
                 getResource("signUp.fxml"));
@@ -329,6 +331,7 @@ public class MainController implements Initializable {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.showAndWait();
     }
 }
