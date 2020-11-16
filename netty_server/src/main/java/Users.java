@@ -14,7 +14,7 @@ public class Users {
     }
 
 
-    public String getNick(String login, String password) {
+    public String getNick(String login, String password) throws SQLException {
         String select = String.format("SELECT nick FROM users WHERE login = '%s' and password = '%s'", login, password);
         try {
             ps = DbConn.getInstance()
@@ -23,11 +23,13 @@ public class Users {
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
                 String s = resultSet.getString(1);
+                ps.close();
                 return s;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        ps.close();
         return null;
     }
 
@@ -43,6 +45,7 @@ public class Users {
             ps.close();
             return "true";
         } catch (SQLException s) {
+            s.printStackTrace();
             return "false";
         }
     }
