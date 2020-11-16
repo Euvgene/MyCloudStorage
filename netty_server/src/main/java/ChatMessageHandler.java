@@ -4,8 +4,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.io.IOException;
 import java.nio.file.*;
 
-
-public class ChatMessegHandler extends SimpleChannelInboundHandler<AbstractMessage> {
+public class ChatMessageHandler extends SimpleChannelInboundHandler<AbstractMessage> {
     private Path path = Paths.get("server", "ServerStorage");
     private final String PATH = path.toString();
     private Users u = new Users();
@@ -38,7 +37,8 @@ public class ChatMessegHandler extends SimpleChannelInboundHandler<AbstractMessa
                     }
                     break;
                 case SIGN_UP:
-                    u.addNick(cm.getParam(), cm.getSecondParam(), cm.getThirdParam());
+                  String s = u.addNick(cm.getParam(), cm.getSecondParam(), cm.getThirdParam());
+                    ctx.writeAndFlush(new CommandMessage(Command.SIGN_UP, s));
                     break;
                 case STORAGE_FILES_LIST:
                     ListMessage lm = new ListMessage();
@@ -65,8 +65,6 @@ public class ChatMessegHandler extends SimpleChannelInboundHandler<AbstractMessa
                     }
                     break;
                 case FILE_REQUEST:
-                    String s = cm.getParam();
-                    String[] str = s.replace("\\", "/").split("/", 8);
                     if (Files.exists(Paths.get(cm.getParam() + "/" + cm.getSecondParam()))) {
                         FileMessage fm = new FileMessage(Paths.get(cm.getParam() + "/" + cm.getSecondParam()));
                         ctx.writeAndFlush(fm);

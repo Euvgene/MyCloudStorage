@@ -9,14 +9,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="568.0" prefWidth="1024.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
+<?import javafx.scene.layout.HBox?>
+<VBox fx:id="Box" prefHeight="568.0" prefWidth="1024.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
+    <HBox nodeOrientation="RIGHT_TO_LEFT" spacing="680.0">
+        <children>
+            <Button fx:id="Exit" mnemonicParsing="false" onAction="#buttonExit" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #811313;" text="Exit" textFill="#000000">
+                <font>
+                    <Font name="Futura Medium" size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets />
+                </HBox.margin>
+            </Button>
+        </children>
+        <VBox.margin>
+            <Insets right="82.0" top="10.0" />
+        </VBox.margin>
+    </HBox>
         <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@cloud.png" />
          </image>
          <VBox.margin>
-            <Insets left="420.0" right="420.0" top="80.0" />
+            <Insets left="420.0" right="420.0" top="30.0" />
          </VBox.margin>
       </ImageView>
       <TextField fx:id="nick" layoutX="240.0" layoutY="174.0" prefHeight="54.0" promptText="User nick" style="-fx-background-radius: 10;">
@@ -43,7 +59,7 @@
             <Font name="Futura Medium" size="18.0" />
          </font>
       </PasswordField>
-      <Button fx:id="signUpBtn" mnemonicParsing="false" onAction="#signUpAction" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #f5f1f1; -fx-background-radius: 10;" text="Sign up" textFill="#000000">
+      <Button fx:id="signUp" mnemonicParsing="false" onAction="#signUpAction" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #f5f1f1; -fx-background-radius: 10;" text="Sign up" textFill="#000000">
          <VBox.margin>
             <Insets left="410.0" right="410.0" top="10.0" />
          </VBox.margin>

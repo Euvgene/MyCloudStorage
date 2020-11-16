@@ -9,6 +9,21 @@
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
       <VBox fx:id="auth" prefHeight="568.0" prefWidth="1024.0" style="-fx-background-color: #000000;">
+         <HBox nodeOrientation="RIGHT_TO_LEFT" spacing="680.0">
+            <children>
+               <Button fx:id="Exit" mnemonicParsing="false" onAction="#buttonExit" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #811313;" text="Exit" textFill="#000000">
+                  <font>
+                     <Font name="Futura Medium" size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <VBox.margin>
+               <Insets right="82.0" top="10.0" />
+            </VBox.margin>
+         </HBox>
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,7 +49,7 @@
                   <Font name="Futura Medium" size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="signUp" layoutX="10.0" layoutY="408.0" mnemonicParsing="false" onAction="#setSignUp" style="-fx-background-color: #f9f9fa;" text="Sign up?" textFill="#000000">
+            <Button fx:id="signUpBtn" layoutX="10.0" layoutY="408.0" mnemonicParsing="false" onAction="#setSignUp" style="-fx-background-color: #f9f9fa;" text="Sign up?" textFill="#000000">
                <VBox.margin>
                   <Insets left="699.0" right="230.0" top="30.0" />
                </VBox.margin>

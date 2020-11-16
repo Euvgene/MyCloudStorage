@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -15,6 +16,7 @@ public class Client extends Application {
         scene = new Scene(loadFXML("main"));
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

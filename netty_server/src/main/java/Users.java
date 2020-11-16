@@ -9,16 +9,18 @@ import java.util.List;
 public class Users {
     public List<UserEntity> usersList;
     private PreparedStatement ps;
-    public Users()  {
-        }
+
+    public Users() {
+    }
 
 
-    public String getNick(String login, String password)  {
-        String select = String.format("SELECT nick FROM users WHERE login = '%s' and password = '%s'",login, password);
-        try{ps = DbConn.getInstance()
-                .connection()
-                .prepareStatement(select);
-        ResultSet resultSet = ps.executeQuery();
+    public String getNick(String login, String password) {
+        String select = String.format("SELECT nick FROM users WHERE login = '%s' and password = '%s'", login, password);
+        try {
+            ps = DbConn.getInstance()
+                    .connection()
+                    .prepareStatement(select);
+            ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
                 String s = resultSet.getString(1);
                 return s;
@@ -29,20 +31,22 @@ public class Users {
         return null;
     }
 
-    public void addNick(String nick, String login, String password)  {
-       try {
-           ps = DbConn.getInstance()
-                   .connection()
-                   .prepareStatement("INSERT INTO users (nick, login, password) VALUES (?,?,?)");
-           ps.setString(1, nick);
-           ps.setString(2, login);
-           ps.setString(3, password);
-           ps.executeUpdate();
-           ps.close();
-       } catch (SQLException s){
-
-       }
+    public String addNick(String nick, String login, String password) {
+        try {
+            ps = DbConn.getInstance()
+                    .connection()
+                    .prepareStatement("INSERT INTO users (nick, login, password) VALUES (?,?,?)");
+            ps.setString(1, nick);
+            ps.setString(2, login);
+            ps.setString(3, password);
+            ps.executeUpdate();
+            ps.close();
+            return "true";
+        } catch (SQLException s) {
+            return "false";
+        }
     }
+
     public class UserEntity {
         private String login;
         private String password;

@@ -21,7 +21,7 @@ public class NettyBaseServer {
                 protected void initChannel(Channel channel) {
                     channel.pipeline().addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
                             new ObjectEncoder(),
-                            new ChatMessegHandler()
+                            new ChatMessageHandler()
                     );
                 }
             });
