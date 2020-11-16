@@ -245,8 +245,6 @@ public class MainController implements Initializable {
         MenuItem renameItem = new MenuItem("Rename file");
         renameItem.setOnAction(actionEvent -> {
             if (getSelectedFileName(storageTable) != null) {
-                String s = getCurrentPath(pathFieldRight);
-                String[] str = s.replace("\\", "/").split("/", 8);
                 TextInputDialog dialog = new TextInputDialog(getSelectedFileName(storageTable));
                 dialog.setTitle("Rename file");
                 dialog.setContentText("New file name: ");
