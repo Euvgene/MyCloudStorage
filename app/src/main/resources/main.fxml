@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
-      <VBox fx:id="auth" prefHeight="568.0" prefWidth="1024.0" style="-fx-background-color: #0a0a0a;">
+      <VBox fx:id="auth" prefHeight="568.0" prefWidth="1024.0" style="-fx-background-color: #000000;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
