@@ -111,11 +111,7 @@ public class MainController implements Initializable {
     }
 
     private void requestToUpdateStorageFilesList(String s) {
-        if (!storageTable.isFocused()) {
             Network.getInstance().sendMessage(new CommandMessage(Command.STORAGE_FILES_LIST, s));
-        } else {
-            Network.getInstance().sendMessage(new CommandMessage(Command.STORAGE_FILES_LIST, s));
-        }
     }
 
     private void requestToUpdateStorageDirectoryList() {
