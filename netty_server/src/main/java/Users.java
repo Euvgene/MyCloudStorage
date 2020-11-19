@@ -4,14 +4,9 @@ import dbconnection.DbConn;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class Users {
     private PreparedStatement ps;
-
-    public Users() {
-    }
-
 
     public String getNick(String login, String password) throws SQLException {
         String select = String.format("SELECT nick FROM users WHERE login = '%s' and password = '%s'", login, password);
