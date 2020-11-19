@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Users {
-    public List<UserEntity> usersList;
     private PreparedStatement ps;
 
     public Users() {
@@ -48,24 +47,5 @@ public class Users {
             s.printStackTrace();
             return "false";
         }
-    }
-
-    public class UserEntity {
-        private String login;
-        private String password;
-        private String rooth;
-
-        public void setLogin(String login) {
-            this.login = login;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public void setRooth(String rooth) {
-            this.rooth = rooth;
-        }
-
     }
 }
