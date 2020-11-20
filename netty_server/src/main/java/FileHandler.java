@@ -4,7 +4,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.io.IOException;
 import java.nio.file.*;
 
-public class ChatMessageHandler extends SimpleChannelInboundHandler<AbstractMessage> {
+public class FileHandler extends SimpleChannelInboundHandler<AbstractMessage> {
     private Path path = Paths.get("server", "ServerStorage");
     private final String PATH = path.toString();
     private Users u = new Users();
